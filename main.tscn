@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=3 uid="uid://w5npj4jeyf8h"]
+
+[ext_resource type="PackedScene" uid="uid://cnrwr5xoco8pg" path="res://gracz.tscn" id="1_2esbv"]
+[ext_resource type="Script" path="res://main.gd" id="1_yh5v6"]
+[ext_resource type="Texture2D" uid="uid://dreyn3skavuws" path="res://Bg.png" id="3_fvdvr"]
+[ext_resource type="PackedScene" uid="uid://rafx5036qkeb" path="res://UI.tscn" id="5_fgdff"]
+[ext_resource type="AudioStream" uid="uid://i034uq31333i" path="res://plasmablaster-37114.mp3" id="5_gfcbh"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_yh5v6")
+
+[node name="UI" parent="." instance=ExtResource("5_fgdff")]
+visible = false
+
+[node name="Tlo" type="TextureRect" parent="."]
+anchors_preset = -1
+anchor_right = 1.43889
+anchor_bottom = 1.02417
+offset_right = -474.001
+offset_bottom = -58.0081
+texture = ExtResource("3_fvdvr")
+expand_mode = 1
+
+[node name="Gracz" parent="." instance=ExtResource("1_2esbv")]
+position = Vector2(540, 2300)
+scale = Vector2(7.96, 7.96)
+
+[node name="SpaceshipControl" type="HSlider" parent="."]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1080.0
+value = 240.0
+metadata/_edit_use_anchors_ = true
+
+[node name="ShootDelay" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="SpawnDelay" type="Timer" parent="."]
+
+[node name="DiffTimer" type="Timer" parent="."]
+wait_time = 15.0
+
+[node name="SpawnSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_gfcbh")
+
+[node name="ShieldTimer" type="Timer" parent="."]
+wait_time = 45.0
+one_shot = true
+
+[connection signal="menu" from="UI" to="." method="menu"]
+[connection signal="pause" from="UI" to="." method="pause"]
+[connection signal="retry" from="UI" to="." method="start"]
+[connection signal="start" from="UI" to="." method="start"]
+[connection signal="unpause" from="UI" to="." method="odpauzuj"]
+[connection signal="area_entered" from="Gracz" to="Gracz" method="uderzono"]
+[connection signal="hit" from="Gracz" to="." method="uderzono"]
+[connection signal="timeout" from="ShootDelay" to="." method="shoot"]
+[connection signal="timeout" from="SpawnDelay" to="." method="spawn"]
+[connection signal="timeout" from="DiffTimer" to="." method="_on_diff_timer_timeout"]
+[connection signal="timeout" from="ShieldTimer" to="." method="regeneruj"]

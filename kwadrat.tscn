@@ -1,0 +1,67 @@
+[gd_scene load_steps=8 format=3 uid="uid://cdf0x2gbdxojg"]
+
+[ext_resource type="Script" path="res://kwadrat.gd" id="1_7c101"]
+[ext_resource type="Texture2D" uid="uid://cf2ov6ohi0bwi" path="res://spaceship.png" id="2_sq326"]
+[ext_resource type="FontFile" uid="uid://dmkolx8kifdm7" path="res://COMIC.TTF" id="3_08any"]
+
+[sub_resource type="Gradient" id="Gradient_w66yd"]
+offsets = PackedFloat32Array(0, 0.505226, 0.993031, 1)
+colors = PackedColorArray(105.337, 100, 0, 1, 0.773519, 0.773519, 0.773519, 1, 105.337, 100, 0, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_wok7i"]
+gradient = SubResource("Gradient_w66yd")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kyddk"]
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+spread = 0.0
+gravity = Vector3(0, -98, 0)
+color_ramp = SubResource("GradientTexture1D_wok7i")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_e1wbm"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Kwadrat" type="RigidBody2D" groups=["przeciwnicy"]]
+script = ExtResource("1_7c101")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.5, 0)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_sq326")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2(0.5, -1)
+polygon = PackedVector2Array(44.5, 75, 44.5, 70, 64.5, 70, 64.5, 65, 74.5, 65, 74.5, 60, 79.5, 60, 79.5, 40, 74.5, 40, 74.5, 35, 64.5, 35, 64.5, 29, 44.5, 29, 44.5, 25, 39.5, 25, 39.5, 10, 34.5, 10, 34.5, -20, 29.5, -20, 29.5, -39, 24.5, -39, 24.5, -54, 19.5, -54, 19.5, -65, 14.5, -65, 14.5, -69, 9.5, -69, 9.5, -74, -10.5, -74, -10.5, -69, -15.5, -69, -15.5, -64, -20.5, -64, -20.5, -54, -25.5, -54, -25.5, -39, -30.5, -39, -30.5, -19, -35.5, -19, -35.5, 10, -40.5, 10, -40.5, 25, -45.5, 25, -45.5, 30, -65.5, 30, -65.5, 35, -76.5, 35, -76.5, 39, -81.5, 39, -80.5, 61, -75.5, 61, -75.5, 66, -65.5, 66, -65.5, 71, -45.5, 71, -45.5, 75)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, -0.500003)
+scale = Vector2(7.9, 7.45)
+metadata/_edit_lock_ = true
+
+[node name="CashParticle" type="GPUParticles2D" parent="."]
+scale = Vector2(1, 0.993634)
+emitting = false
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_kyddk")
+texture = SubResource("ViewportTexture_e1wbm")
+lifetime = 1.5
+one_shot = true
+fixed_fps = 0
+draw_order = 0
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(120, 80)
+
+[node name="Label" type="Label" parent="SubViewport"]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(105.337, 100, 0, 1)
+theme_override_fonts/font = ExtResource("3_08any")
+theme_override_font_sizes/font_size = 50
+text = "100$"
+
+[connection signal="area_entered" from="Area2D" to="." method="trafiony"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="poza_ekranem"]

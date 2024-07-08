@@ -1,0 +1,832 @@
+[gd_scene load_steps=33 format=3 uid="uid://rafx5036qkeb"]
+
+[ext_resource type="FontFile" uid="uid://dmkolx8kifdm7" path="res://COMIC.TTF" id="1_2yte2"]
+[ext_resource type="Script" path="res://UI.gd" id="1_o3wiw"]
+[ext_resource type="Texture2D" uid="uid://dl520jwmeymai" path="res://MenuBg.png" id="2_q8oov"]
+[ext_resource type="Theme" uid="uid://jkpp3nh2f6jd" path="res://MenuButtons.tres" id="4_brhax"]
+[ext_resource type="Texture2D" uid="uid://dewj8mkrrmqkh" path="res://zycie.png" id="4_byexd"]
+[ext_resource type="Texture2D" uid="uid://bd3bxptasb18" path="res://GameOverBg.png" id="6_2ir0q"]
+[ext_resource type="Texture2D" uid="uid://bu66s8roxey06" path="res://pause.png" id="6_fr6qq"]
+[ext_resource type="Script" path="res://Ulepszenia.gd" id="8_6du5d"]
+[ext_resource type="Script" path="res://FasterShooting.gd" id="8_u0b72"]
+[ext_resource type="Texture2D" uid="uid://d34i7xg8l21bu" path="res://placeholder.png" id="8_w2brb"]
+[ext_resource type="Script" path="res://AviableFunds.gd" id="9_4yhyh"]
+[ext_resource type="Script" path="res://Sklep.gd" id="9_b484s"]
+[ext_resource type="Theme" uid="uid://dd84r0oua01xd" path="res://Store.tres" id="10_smxgd"]
+[ext_resource type="PackedScene" uid="uid://djaqh8tji2ssx" path="res://Upgrade_template.tscn" id="12_35b1w"]
+[ext_resource type="Script" path="res://MoreMoney.gd" id="13_c3yc8"]
+[ext_resource type="Script" path="res://BetaSkin.gd" id="14_4gmyq"]
+[ext_resource type="Script" path="res://Skiny.gd" id="14_l4jcw"]
+[ext_resource type="Texture2D" uid="uid://c4g2t1x25a23o" path="res://Skins/Classic/Soccer_ball.png" id="14_sibye"]
+[ext_resource type="Script" path="res://Homing_Bullets.gd" id="15_xed8n"]
+[ext_resource type="Script" path="res://Upgrade_template.gd" id="16_yxvd6"]
+[ext_resource type="Texture2D" uid="uid://crdwssmrw5ai7" path="res://shield.png" id="17_cw38t"]
+[ext_resource type="Script" path="res://DefaultSkin.gd" id="17_rtbae"]
+[ext_resource type="Script" path="res://GoldSkin.gd" id="19_c3aev"]
+[ext_resource type="Texture2D" uid="uid://chyn4ac0x04yc" path="res://CretinsBackground.png" id="19_w2xjr"]
+[ext_resource type="Script" path="res://EvilSkin.gd" id="21_qwbor"]
+[ext_resource type="Texture2D" uid="uid://cf2ov6ohi0bwi" path="res://spaceship.png" id="23_17kbi"]
+[ext_resource type="Texture2D" uid="uid://ctrmxtng078xv" path="res://Skins/Golden/spaceshipmidas.png" id="25_4audw"]
+[ext_resource type="Texture2D" uid="uid://3t6ga6m2bt0" path="res://Skins/alien.png" id="27_b46bh"]
+
+[sub_resource type="Theme" id="Theme_c6qli"]
+default_font = ExtResource("1_2yte2")
+default_font_size = 50
+
+[sub_resource type="Theme" id="Theme_wlk0g"]
+
+[sub_resource type="Theme" id="Theme_tjng6"]
+default_font = ExtResource("1_2yte2")
+default_font_size = 50
+
+[sub_resource type="Theme" id="Theme_dysbx"]
+default_font = ExtResource("1_2yte2")
+default_font_size = 30
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_o3wiw")
+
+[node name="TitleScreen" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="TloEkran" type="TextureRect" parent="TitleScreen"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.14159
+pivot_offset = Vector2(540, 1200)
+texture = ExtResource("2_q8oov")
+metadata/_edit_use_anchors_ = true
+
+[node name="Title" type="Label" parent="TitleScreen"]
+anchors_preset = -1
+anchor_left = 0.108333
+anchor_top = 0.0641667
+anchor_right = 0.902778
+anchor_bottom = 0.122917
+offset_left = -0.999641
+offset_top = -116.0
+offset_right = -1.00024
+offset_bottom = -116.001
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_2yte2")
+theme_override_font_sizes/font_size = 100
+text = "Kosmo Strzelanina"
+metadata/_edit_use_anchors_ = true
+
+[node name="ver" type="Label" parent="TitleScreen"]
+anchors_preset = -1
+anchor_left = 0.817593
+anchor_top = 0.98
+anchor_right = 1.00185
+anchor_bottom = 0.997917
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_2yte2")
+theme_override_font_sizes/font_size = 30
+text = "0.5.0 (BETA)"
+metadata/_edit_use_anchors_ = true
+
+[node name="StartButton" type="Button" parent="TitleScreen"]
+anchors_preset = -1
+anchor_left = 0.293519
+anchor_top = 0.416667
+anchor_right = 0.705556
+anchor_bottom = 0.540417
+offset_left = -1.00101
+offset_right = -1.00092
+offset_bottom = 3.00012
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_brhax")
+theme_override_fonts/font = ExtResource("1_2yte2")
+theme_override_font_sizes/font_size = 100
+text = "Start"
+metadata/_edit_use_anchors_ = true
+
+[node name="StoreButton" type="Button" parent="TitleScreen"]
+anchors_preset = -1
+anchor_left = 0.292593
+anchor_top = 0.583334
+anchor_right = 0.70463
+anchor_bottom = 0.707084
+offset_right = -6.10352e-05
+offset_bottom = 3.00012
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_brhax")
+theme_override_fonts/font = ExtResource("1_2yte2")
+theme_override_font_sizes/font_size = 100
+text = "Sklep"
+metadata/_edit_use_anchors_ = true
+
+[node name="CreditsButton" type="Button" parent="TitleScreen"]
+anchors_preset = -1
+anchor_left = 0.292593
+anchor_top = 0.75
+anchor_right = 0.70463
+anchor_bottom = 0.875
+offset_right = 6.10352e-05
+theme = ExtResource("4_brhax")
+text = "Autorzy"
+metadata/_edit_use_anchors_ = true
+
+[node name="Hud" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="LivesDisplay" type="Label" parent="Hud"]
+anchors_preset = -1
+anchor_left = 0.146296
+anchor_top = 0.0229167
+anchor_right = 0.210879
+anchor_bottom = 0.0631945
+offset_right = 1.52588e-05
+theme_override_fonts/font = ExtResource("1_2yte2")
+theme_override_font_sizes/font_size = 50
+text = "5"
+metadata/_edit_use_anchors_ = true
+
+[node name="LivesIcon" type="TextureRect" parent="Hud"]
+anchors_preset = -1
+anchor_left = 0.0518519
+anchor_top = 0.0229167
+anchor_right = 0.124074
+anchor_bottom = 0.0583334
+texture = ExtResource("4_byexd")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="PauseButton" type="TextureButton" parent="Hud"]
+anchors_preset = -1
+anchor_left = 0.887963
+anchor_top = 0.0241667
+anchor_right = 0.941667
+anchor_bottom = 0.0545833
+texture_normal = ExtResource("6_fr6qq")
+texture_pressed = ExtResource("6_fr6qq")
+texture_hover = ExtResource("6_fr6qq")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Shield" type="TextureRect" parent="Hud"]
+anchors_preset = -1
+anchor_left = 0.0157407
+anchor_top = 0.00875
+anchor_right = 0.148148
+anchor_bottom = 0.0683333
+texture = ExtResource("17_cw38t")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ShieldDisplay" type="Label" parent="Hud"]
+anchors_preset = -1
+anchor_left = 0.0648148
+anchor_top = 0.02125
+anchor_right = 0.101852
+anchor_bottom = 0.0508333
+theme_override_fonts/font = ExtResource("1_2yte2")
+theme_override_font_sizes/font_size = 50
+text = "5"
+metadata/_edit_use_anchors_ = true
+
+[node name="GameOver" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="GameOverBg" type="TextureRect" parent="GameOver"]
+offset_right = 1080.0
+offset_bottom = 2400.0
+texture = ExtResource("6_2ir0q")
+
+[node name="Text" type="Label" parent="GameOver"]
+anchors_preset = -1
+anchor_left = 0.25463
+anchor_top = 0.0408333
+anchor_right = 0.735185
+anchor_bottom = 0.0995833
+theme_override_fonts/font = ExtResource("1_2yte2")
+theme_override_font_sizes/font_size = 100
+text = "Game Over"
+metadata/_edit_use_anchors_ = true
+
+[node name="ScoreText" type="Label" parent="GameOver"]
+anchors_preset = -1
+anchor_left = 0.198148
+anchor_top = 0.107917
+anchor_right = 0.509259
+anchor_bottom = 0.1375
+theme_override_fonts/font = ExtResource("1_2yte2")
+theme_override_font_sizes/font_size = 50
+text = "Twój wynik to:"
+metadata/_edit_use_anchors_ = true
+
+[node name="Menu" type="Button" parent="GameOver"]
+anchors_preset = -1
+anchor_left = 0.189815
+anchor_top = 0.785833
+anchor_right = 0.849074
+anchor_bottom = 0.909167
+theme_override_fonts/font = ExtResource("1_2yte2")
+theme_override_font_sizes/font_size = 50
+text = "Menu"
+metadata/_edit_use_anchors_ = true
+
+[node name="Retry" type="Button" parent="GameOver"]
+anchors_preset = -1
+anchor_left = 0.175926
+anchor_top = 0.60875
+anchor_right = 0.844444
+anchor_bottom = 0.735417
+theme_override_fonts/font = ExtResource("1_2yte2")
+theme_override_font_sizes/font_size = 50
+text = "Jeszcze raz"
+metadata/_edit_use_anchors_ = true
+
+[node name="HighScoreText" type="Label" parent="GameOver"]
+anchors_preset = -1
+anchor_left = 0.187037
+anchor_top = 0.15625
+anchor_right = 0.812963
+anchor_bottom = 0.185833
+theme = SubResource("Theme_c6qli")
+text = "Twój najlepszy wynik to: 200"
+metadata/_edit_use_anchors_ = true
+
+[node name="PauseScreen" type="CanvasLayer" parent="."]
+process_mode = 2
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="PauseScreen"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.4)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="PauseScreen"]
+anchors_preset = -1
+anchor_left = 0.259259
+anchor_right = 0.740741
+anchor_bottom = 0.116667
+grow_horizontal = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("1_2yte2")
+theme_override_font_sizes/font_size = 200
+text = "Pauza"
+justification_flags = 35
+metadata/_edit_use_anchors_ = true
+
+[node name="UnPause" type="Button" parent="PauseScreen"]
+anchors_preset = -1
+anchor_left = 0.189815
+anchor_top = 0.648333
+anchor_right = 0.811111
+anchor_bottom = 0.768333
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_2yte2")
+theme_override_font_sizes/font_size = 200
+text = "Wznów"
+metadata/_edit_use_anchors_ = true
+
+[node name="Menu" type="Button" parent="PauseScreen"]
+anchors_preset = -1
+anchor_left = 0.189815
+anchor_top = 0.820417
+anchor_right = 0.811111
+anchor_bottom = 0.940417
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_2yte2")
+theme_override_font_sizes/font_size = 200
+text = "Menu"
+metadata/_edit_use_anchors_ = true
+
+[node name="Sklep" type="CanvasLayer" parent="."]
+visible = false
+script = ExtResource("9_b484s")
+
+[node name="AviableFunds" type="Label" parent="Sklep"]
+anchors_preset = -1
+anchor_right = 0.301852
+anchor_bottom = 0.0316667
+theme = ExtResource("10_smxgd")
+text = "$100"
+script = ExtResource("9_4yhyh")
+metadata/_edit_use_anchors_ = true
+
+[node name="Zakladki" type="TabContainer" parent="Sklep"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_2yte2")
+theme_override_font_sizes/font_size = 50
+tab_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Ulepszenia" type="TabBar" parent="Sklep/Zakladki"]
+layout_mode = 2
+max_tab_width = 1080
+script = ExtResource("8_6du5d")
+
+[node name="FasterShooting" type="ItemList" parent="Sklep/Zakladki/Ulepszenia"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0648148
+anchor_top = 0.0331754
+anchor_right = 0.875926
+anchor_bottom = 0.170616
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("8_u0b72")
+
+[node name="Buy" type="TextureButton" parent="Sklep/Zakladki/Ulepszenia/FasterShooting"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0143043
+anchor_top = 0.0344825
+anchor_right = 0.306892
+anchor_bottom = 0.739812
+offset_right = -1.52588e-05
+theme = SubResource("Theme_wlk0g")
+texture_normal = ExtResource("8_w2brb")
+metadata/_edit_use_anchors_ = true
+
+[node name="Name" type="Label" parent="Sklep/Zakladki/Ulepszenia/FasterShooting"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.362809
+anchor_top = 0.163009
+anchor_right = 0.940182
+anchor_bottom = 0.38558
+theme = SubResource("Theme_tjng6")
+text = "Szybsze strzelanie"
+metadata/_edit_use_anchors_ = true
+
+[node name="Price" type="Label" parent="Sklep/Zakladki/Ulepszenia/FasterShooting"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.373212
+anchor_top = 0.504702
+anchor_right = 0.950585
+anchor_bottom = 0.727273
+theme = ExtResource("10_smxgd")
+text = "200$"
+metadata/_edit_use_anchors_ = true
+
+[node name="Level" type="Label" parent="Sklep/Zakladki/Ulepszenia/FasterShooting"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0780234
+anchor_top = 0.761756
+anchor_right = 0.228869
+anchor_bottom = 0.984327
+offset_top = -1.52588e-05
+theme = ExtResource("10_smxgd")
+text = "Lv 1"
+metadata/_edit_use_anchors_ = true
+
+[node name="MoreMoney" parent="Sklep/Zakladki/Ulepszenia" instance=ExtResource("12_35b1w")]
+layout_mode = 1
+anchor_left = 0.0675926
+anchor_top = 0.181818
+anchor_right = 0.875
+anchor_bottom = 0.319259
+script = ExtResource("13_c3yc8")
+
+[node name="Name" parent="Sklep/Zakladki/Ulepszenia/MoreMoney" index="2"]
+text = "Więcej Pieniędzy"
+
+[node name="HomingBullets" parent="Sklep/Zakladki/Ulepszenia" instance=ExtResource("12_35b1w")]
+visible = false
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+script = ExtResource("15_xed8n")
+
+[node name="BackButton" type="TextureButton" parent="Sklep/Zakladki/Ulepszenia"]
+layout_mode = 0
+offset_top = 2175.0
+offset_right = 225.0
+offset_bottom = 2400.0
+texture_normal = ExtResource("8_w2brb")
+
+[node name="Shield" parent="Sklep/Zakladki/Ulepszenia" instance=ExtResource("12_35b1w")]
+layout_mode = 1
+anchor_left = 0.0796296
+anchor_top = 0.330461
+anchor_right = 0.862037
+anchor_bottom = 0.467902
+grow_horizontal = 1
+grow_vertical = 1
+script = ExtResource("16_yxvd6")
+
+[node name="Buy" parent="Sklep/Zakladki/Ulepszenia/Shield" index="1"]
+texture_normal = ExtResource("17_cw38t")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Name" parent="Sklep/Zakladki/Ulepszenia/Shield" index="2"]
+text = "Tarcza"
+
+[node name="Price" parent="Sklep/Zakladki/Ulepszenia/Shield" index="3"]
+text = "500$"
+
+[node name="Skiny" type="TabBar" parent="Sklep/Zakladki"]
+visible = false
+layout_mode = 2
+script = ExtResource("14_l4jcw")
+
+[node name="Label" type="Label" parent="Sklep/Zakladki/Skiny"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0314815
+anchor_top = 0.037053
+anchor_right = 0.987963
+anchor_bottom = 0.219302
+theme = ExtResource("10_smxgd")
+theme_override_font_sizes/font_size = 117
+text = "Pepeno
+(Work in progress)"
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="Sklep/Zakladki/Skiny"]
+visible = false
+layout_mode = 0
+anchor_left = 0.241667
+anchor_top = 0.221456
+anchor_right = 0.743519
+anchor_bottom = 0.459716
+texture = ExtResource("8_w2brb")
+metadata/_edit_use_anchors_ = true
+
+[node name="BetaSkin" type="Control" parent="Sklep/Zakladki/Skiny"]
+layout_mode = 1
+anchor_left = 0.00185185
+anchor_top = 0.236967
+anchor_right = 0.998148
+anchor_bottom = 0.454976
+offset_left = -2.0
+offset_top = -0.000427246
+offset_right = -2.0
+offset_bottom = -0.000488281
+script = ExtResource("14_4gmyq")
+metadata/_edit_use_anchors_ = true
+
+[node name="Name" type="Label" parent="Sklep/Zakladki/Skiny/BetaSkin"]
+layout_mode = 2
+anchor_right = 0.708179
+anchor_bottom = 0.278657
+offset_right = -379.001
+offset_bottom = -70.0004
+theme = ExtResource("10_smxgd")
+theme_override_font_sizes/font_size = 100
+text = "Starożytna Piłka"
+metadata/_edit_use_anchors_ = true
+
+[node name="Description" type="Label" parent="Sklep/Zakladki/Skiny/BetaSkin"]
+layout_mode = 2
+anchor_left = 0.00836431
+anchor_top = 0.349802
+anchor_right = 0.364312
+anchor_bottom = 0.434783
+theme = SubResource("Theme_dysbx")
+text = "Jest tu od zarania dziejów"
+metadata/_edit_use_anchors_ = true
+
+[node name="Price" type="Label" parent="Sklep/Zakladki/Skiny/BetaSkin"]
+layout_mode = 0
+anchor_left = 0.789963
+anchor_top = 0.620555
+anchor_right = 0.937732
+anchor_bottom = 0.760871
+offset_right = -8.0
+theme = ExtResource("10_smxgd")
+text = "3000$"
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="Sklep/Zakladki/Skiny/BetaSkin"]
+layout_mode = 2
+anchor_left = 0.731413
+anchor_top = 0.0158103
+anchor_right = 0.989777
+anchor_bottom = 0.565219
+texture = ExtResource("14_sibye")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Equip" type="Button" parent="Sklep/Zakladki/Skiny/BetaSkin"]
+layout_mode = 0
+anchor_left = 0.017658
+anchor_top = 0.537549
+anchor_right = 0.233271
+anchor_bottom = 0.816206
+offset_right = 8.0
+theme = ExtResource("10_smxgd")
+text = "Wyposarz"
+metadata/_edit_use_anchors_ = true
+
+[node name="Buy" type="Button" parent="Sklep/Zakladki/Skiny/BetaSkin"]
+layout_mode = 0
+anchor_left = 0.017658
+anchor_top = 0.537549
+anchor_right = 0.233271
+anchor_bottom = 0.816206
+theme = ExtResource("10_smxgd")
+text = "Kup"
+metadata/_edit_use_anchors_ = true
+
+[node name="DefaultSkin" type="Control" parent="Sklep/Zakladki/Skiny"]
+layout_mode = 1
+anchor_top = 0.0469625
+anchor_right = 0.996296
+anchor_bottom = 0.264972
+offset_top = -8.99996
+offset_bottom = -9.0
+script = ExtResource("17_rtbae")
+metadata/_edit_use_anchors_ = true
+
+[node name="Name" type="Label" parent="Sklep/Zakladki/Skiny/DefaultSkin"]
+layout_mode = 2
+anchor_right = 0.737918
+anchor_bottom = 0.278656
+offset_right = -411.001
+offset_bottom = -70.0
+theme = ExtResource("10_smxgd")
+theme_override_font_sizes/font_size = 100
+text = "Normalny Statek"
+metadata/_edit_use_anchors_ = true
+
+[node name="Description" type="Label" parent="Sklep/Zakladki/Skiny/DefaultSkin"]
+layout_mode = 2
+anchor_left = 0.00836431
+anchor_top = 0.349802
+anchor_right = 0.364312
+anchor_bottom = 0.434783
+theme = SubResource("Theme_dysbx")
+text = "Standardowy Statek"
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="Sklep/Zakladki/Skiny/DefaultSkin"]
+layout_mode = 2
+anchor_left = 0.731413
+anchor_top = 0.0158103
+anchor_right = 0.989777
+anchor_bottom = 0.565217
+texture = ExtResource("23_17kbi")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Equip" type="Button" parent="Sklep/Zakladki/Skiny/DefaultSkin"]
+layout_mode = 0
+anchor_left = 0.017658
+anchor_top = 0.537549
+anchor_right = 0.240706
+anchor_bottom = 0.816206
+offset_right = -0.000488281
+theme = ExtResource("10_smxgd")
+text = "Wyposarz"
+metadata/_edit_use_anchors_ = true
+
+[node name="GoldSkin" type="Control" parent="Sklep/Zakladki/Skiny"]
+layout_mode = 1
+anchor_left = 0.00185185
+anchor_top = 0.428695
+anchor_right = 0.998148
+anchor_bottom = 0.646703
+offset_left = -2.0
+offset_top = 15.0
+offset_right = -2.0
+offset_bottom = 15.0
+script = ExtResource("19_c3aev")
+metadata/_edit_use_anchors_ = true
+
+[node name="Name" type="Label" parent="Sklep/Zakladki/Skiny/GoldSkin"]
+layout_mode = 2
+anchor_right = 0.589219
+anchor_bottom = 0.278657
+offset_right = -251.001
+offset_bottom = -70.0004
+theme = ExtResource("10_smxgd")
+theme_override_font_sizes/font_size = 100
+text = "Dotyk Midasa"
+metadata/_edit_use_anchors_ = true
+
+[node name="Description" type="Label" parent="Sklep/Zakladki/Skiny/GoldSkin"]
+layout_mode = 2
+anchor_left = 0.00836431
+anchor_top = 0.349802
+anchor_right = 0.430297
+anchor_bottom = 0.434783
+offset_right = -71.0003
+theme = SubResource("Theme_dysbx")
+text = "BOHGATCTWO SKUHWYSYNY!"
+metadata/_edit_use_anchors_ = true
+
+[node name="Price" type="Label" parent="Sklep/Zakladki/Skiny/GoldSkin"]
+layout_mode = 0
+anchor_left = 0.789963
+anchor_top = 0.620555
+anchor_right = 0.959108
+anchor_bottom = 0.760871
+offset_right = -31.0
+theme = ExtResource("10_smxgd")
+text = "15000$"
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="Sklep/Zakladki/Skiny/GoldSkin"]
+layout_mode = 2
+anchor_left = 0.731413
+anchor_top = 0.0158103
+anchor_right = 0.989777
+anchor_bottom = 0.565219
+texture = ExtResource("25_4audw")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Equip" type="Button" parent="Sklep/Zakladki/Skiny/GoldSkin"]
+layout_mode = 0
+anchor_left = 0.017658
+anchor_top = 0.537549
+anchor_right = 0.233271
+anchor_bottom = 0.816206
+offset_right = 8.0
+theme = ExtResource("10_smxgd")
+text = "Wyposarz"
+metadata/_edit_use_anchors_ = true
+
+[node name="Buy" type="Button" parent="Sklep/Zakladki/Skiny/GoldSkin"]
+layout_mode = 0
+anchor_left = 0.017658
+anchor_top = 0.537549
+anchor_right = 0.233271
+anchor_bottom = 0.816206
+theme = ExtResource("10_smxgd")
+text = "Kup"
+metadata/_edit_use_anchors_ = true
+
+[node name="BackButton" type="TextureButton" parent="Sklep/Zakladki/Skiny"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 2094.0
+offset_right = 229.0
+offset_bottom = 2319.0
+texture_normal = ExtResource("8_w2brb")
+
+[node name="EvilSkin" type="Control" parent="Sklep/Zakladki/Skiny"]
+layout_mode = 1
+anchor_left = 0.00185185
+anchor_top = 0.627747
+anchor_right = 0.998148
+anchor_bottom = 0.845756
+offset_left = -2.0
+offset_top = 43.0
+offset_right = -2.0
+offset_bottom = 43.0
+script = ExtResource("21_qwbor")
+metadata/_edit_use_anchors_ = true
+
+[node name="Name" type="Label" parent="Sklep/Zakladki/Skiny/EvilSkin"]
+layout_mode = 2
+anchor_right = 0.590149
+anchor_bottom = 0.278657
+offset_right = -252.001
+offset_bottom = -70.0004
+theme = ExtResource("10_smxgd")
+theme_override_font_sizes/font_size = 100
+text = "Dzień na opak"
+metadata/_edit_use_anchors_ = true
+
+[node name="Description" type="Label" parent="Sklep/Zakladki/Skiny/EvilSkin"]
+layout_mode = 2
+anchor_left = 0.00836431
+anchor_top = 0.349802
+anchor_right = 0.407063
+anchor_bottom = 0.434783
+offset_right = -46.0003
+theme = SubResource("Theme_dysbx")
+text = "Przejdż na ciemną strone mocy"
+metadata/_edit_use_anchors_ = true
+
+[node name="Price" type="Label" parent="Sklep/Zakladki/Skiny/EvilSkin"]
+layout_mode = 0
+anchor_left = 0.789963
+anchor_top = 0.620555
+anchor_right = 0.937732
+anchor_bottom = 0.760871
+offset_right = -8.0
+theme = ExtResource("10_smxgd")
+text = "7000$"
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="Sklep/Zakladki/Skiny/EvilSkin"]
+layout_mode = 2
+anchor_left = 0.731413
+anchor_top = 0.0158103
+anchor_right = 0.989777
+anchor_bottom = 0.565219
+texture = ExtResource("27_b46bh")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Equip" type="Button" parent="Sklep/Zakladki/Skiny/EvilSkin"]
+layout_mode = 0
+anchor_left = 0.017658
+anchor_top = 0.537549
+anchor_right = 0.233271
+anchor_bottom = 0.816206
+offset_right = 8.0
+theme = ExtResource("10_smxgd")
+text = "Wyposarz"
+metadata/_edit_use_anchors_ = true
+
+[node name="Buy" type="Button" parent="Sklep/Zakladki/Skiny/EvilSkin"]
+layout_mode = 0
+anchor_left = 0.017658
+anchor_top = 0.537549
+anchor_right = 0.233271
+anchor_bottom = 0.816206
+theme = ExtResource("10_smxgd")
+text = "Kup"
+metadata/_edit_use_anchors_ = true
+
+[node name="Credits" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="Credits"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("19_w2xjr")
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Credits"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "
+
+
+
+
+
+
+
+[font_size=100][center]Kosmo Strzelanina
+
+[font_size=50]Autor: 
+Maciej Kupiec
+
+Playtesterzy:
+Szymon Górniak
+Bartosz
+Dawid Mroczek
+Amin Essoufi
+
+"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="refresh" from="." to="Sklep/AviableFunds" method="_ready"]
+[connection signal="refresh" from="." to="Sklep/Zakladki/Skiny/BetaSkin" method="_ready"]
+[connection signal="refresh" from="." to="Sklep/Zakladki/Skiny/GoldSkin" method="_ready"]
+[connection signal="refresh" from="." to="Sklep/Zakladki/Skiny/EvilSkin" method="_ready"]
+[connection signal="pressed" from="TitleScreen/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="TitleScreen/StartButton" to="TitleScreen" method="startuj"]
+[connection signal="pressed" from="TitleScreen/StoreButton" to="." method="show_store"]
+[connection signal="pressed" from="TitleScreen/StoreButton" to="Sklep/Zakladki/Ulepszenia/MoreMoney" method="_ready"]
+[connection signal="pressed" from="TitleScreen/CreditsButton" to="." method="show_credits"]
+[connection signal="pressed" from="Hud/PauseButton" to="." method="_on_pause_button_pressed"]
+[connection signal="pressed" from="GameOver/Menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="GameOver/Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="PauseScreen/UnPause" to="." method="hide_pause"]
+[connection signal="pressed" from="PauseScreen/Menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="Sklep/Zakladki/Ulepszenia/FasterShooting/Buy" to="Sklep/Zakladki/Ulepszenia/FasterShooting" method="kup"]
+[connection signal="pressed" from="Sklep/Zakladki/Ulepszenia/BackButton" to="." method="hide_store"]
+[connection signal="pressed" from="Sklep/Zakladki/Skiny/BetaSkin/Equip" to="Sklep/Zakladki/Skiny/BetaSkin" method="equip"]
+[connection signal="pressed" from="Sklep/Zakladki/Skiny/BetaSkin/Buy" to="Sklep/Zakladki/Skiny/BetaSkin" method="buy"]
+[connection signal="pressed" from="Sklep/Zakladki/Skiny/DefaultSkin/Equip" to="Sklep/Zakladki/Skiny/DefaultSkin" method="equip"]
+[connection signal="pressed" from="Sklep/Zakladki/Skiny/GoldSkin/Equip" to="Sklep/Zakladki/Skiny/GoldSkin" method="equip"]
+[connection signal="pressed" from="Sklep/Zakladki/Skiny/GoldSkin/Buy" to="Sklep/Zakladki/Skiny/GoldSkin" method="buy"]
+[connection signal="pressed" from="Sklep/Zakladki/Skiny/BackButton" to="." method="hide_store"]
+[connection signal="pressed" from="Sklep/Zakladki/Skiny/EvilSkin/Equip" to="Sklep/Zakladki/Skiny/EvilSkin" method="equip"]
+[connection signal="pressed" from="Sklep/Zakladki/Skiny/EvilSkin/Buy" to="Sklep/Zakladki/Skiny/EvilSkin" method="buy"]
+
+[editable path="Sklep/Zakladki/Ulepszenia/MoreMoney"]
+[editable path="Sklep/Zakladki/Ulepszenia/HomingBullets"]
+[editable path="Sklep/Zakladki/Ulepszenia/Shield"]

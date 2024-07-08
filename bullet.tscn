@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://dnoaxelnwc475"]
+
+[ext_resource type="Script" path="res://bullet.gd" id="1_u8fkn"]
+[ext_resource type="Texture2D" uid="uid://ijukmfrombe0" path="res://Skins/Classic/Soccer_ball.svg" id="2_h0572"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hclda"]
+radius = 10.4672
+
+[node name="Bullet" type="RigidBody2D" groups=["naboje"]]
+mass = 0.01
+gravity_scale = 0.0
+script = ExtResource("1_u8fkn")
+
+[node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(0.993179, 0.979315)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(1.92632, 1.92632)
+shape = SubResource("CircleShape2D_hclda")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.12, 0)
+scale = Vector2(0.051, 0.051)
+texture = ExtResource("2_h0572")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-0.100459, 0.17864)
+scale = Vector2(-1.94136, -1.89678)
+
+[connection signal="area_entered" from="Area2D" to="." method="trafiony"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="poza_ekranem"]

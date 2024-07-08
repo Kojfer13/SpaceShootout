@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnrwr5xoco8pg"]
+
+[ext_resource type="Script" path="res://gracz.gd" id="1_32u3j"]
+[ext_resource type="Texture2D" uid="uid://3t6ga6m2bt0" path="res://Skins/alien.png" id="2_b50pl"]
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_32u3j")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.78814e-07, 1.78814e-07)
+scale = Vector2(0.115635, 0.115635)
+texture = ExtResource("2_b50pl")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(0, 1)
+polygon = PackedVector2Array(9, 8, 0, -10, -9, 8, -8, 8, -3, 5, -3, 6, 3, 6, 3, 5, 5.58499, 6.2925)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
