@@ -133,7 +133,6 @@ text = "Autorzy"
 metadata/_edit_use_anchors_ = true
 
 [node name="Hud" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="LivesDisplay" type="Label" parent="Hud"]
 anchors_preset = -1
@@ -763,6 +762,7 @@ text = "Kup"
 metadata/_edit_use_anchors_ = true
 
 [node name="Credits" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="TextureRect" type="TextureRect" parent="Credits"]
 anchors_preset = 15

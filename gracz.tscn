@@ -1,15 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://cnrwr5xoco8pg"]
+[gd_scene load_steps=4 format=3 uid="uid://cnrwr5xoco8pg"]
 
 [ext_resource type="Script" path="res://gracz.gd" id="1_32u3j"]
-[ext_resource type="Texture2D" uid="uid://3t6ga6m2bt0" path="res://Skins/alien.png" id="2_b50pl"]
+[ext_resource type="PackedScene" uid="uid://c387lxuk1s1n0" path="res://Skins/bartekskin/bartosz.glb" id="3_paf1u"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_nxdkd"]
+viewport_path = NodePath("SubViewport")
 
 [node name="Area2D" type="Area2D"]
 script = ExtResource("1_32u3j")
 
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+
+[node name="bartosz" parent="SubViewport" instance=ExtResource("3_paf1u")]
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport"]
+transform = Transform3D(-0.199211, 0, 0.0177475, 0.00105873, 0.199644, 0.0118839, -0.0177159, 0.011931, -0.198856, 0.17121, -0.37152, -1.94634)
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-1.78814e-07, 1.78814e-07)
-scale = Vector2(0.115635, 0.115635)
-texture = ExtResource("2_b50pl")
+position = Vector2(0, -2)
+scale = Vector2(0.0453616, 0.0453616)
+texture = SubResource("ViewportTexture_nxdkd")
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(0, 1)

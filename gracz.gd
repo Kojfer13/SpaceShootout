@@ -40,6 +40,15 @@ func setskin(val):
 			print("X:", $Sprite2D.scale.x)
 			print("Y:", $Sprite2D.scale.y)
 			GlobalVariables.ChangeEquipped(val)
+		4:
+			print("WYBRANO ID 3")
+			$Sprite2D.texture = preload("res://Skins/alien.png")
+			print("TESKTURA LOADED")
+			$Sprite2D.scale.x = 0.116
+			$Sprite2D.scale.y = 0.116
+			print("X:", $Sprite2D.scale.x)
+			print("Y:", $Sprite2D.scale.y)
+			GlobalVariables.ChangeEquipped(val)
 		_:
 			print("Wczytywanie Domyślnego Skina")
 			$Sprite2D.scale.x = 0.034
