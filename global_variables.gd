@@ -6,7 +6,7 @@ var MoneyLevel = 0
 var HomingLevel = 0
 var ShieldLevel = 0
 var EquippedSkin = 0
-var WhereAmI = 0 # 0 - main menu, 1 - ingame, 2 pause, 3 - shop, 4 - credits
+var WhereAmI = 0 # 0 - main menu, 1 - ingame, 2 pause, 3 - shop, 4 - credits, 5 - code screen
 var OwnedSkins = [true, false, false, false, false]
 signal save
 signal EquipSkin

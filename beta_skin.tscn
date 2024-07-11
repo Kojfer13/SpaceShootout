@@ -1,0 +1,82 @@
+[gd_scene load_steps=6 format=3 uid="uid://nhoiyrxithed"]
+
+[ext_resource type="Script" path="res://BetaSkin.gd" id="1_1nuo6"]
+[ext_resource type="Theme" uid="uid://dd84r0oua01xd" path="res://Store.tres" id="2_ibylf"]
+[ext_resource type="FontFile" uid="uid://dmkolx8kifdm7" path="res://COMIC.TTF" id="3_2yl31"]
+[ext_resource type="Texture2D" uid="uid://c4g2t1x25a23o" path="res://Skins/Classic/Soccer_ball.png" id="4_p2eiu"]
+
+[sub_resource type="Theme" id="Theme_dysbx"]
+default_font = ExtResource("3_2yl31")
+default_font_size = 30
+
+[node name="BetaSkin" type="Control"]
+layout_mode = 3
+anchor_left = 0.00185185
+anchor_top = 0.236967
+anchor_right = 0.998148
+anchor_bottom = 0.454976
+offset_left = -2.0
+offset_top = -0.000427246
+offset_right = -2.0
+offset_bottom = -0.000488281
+script = ExtResource("1_1nuo6")
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 2
+anchor_right = 0.708179
+anchor_bottom = 0.278657
+offset_right = -379.001
+offset_bottom = -70.0004
+theme = ExtResource("2_ibylf")
+theme_override_font_sizes/font_size = 100
+text = "Starożytna Piłka"
+
+[node name="Description" type="Label" parent="."]
+layout_mode = 2
+anchor_left = 0.00836431
+anchor_top = 0.349802
+anchor_right = 0.364312
+anchor_bottom = 0.434783
+theme = SubResource("Theme_dysbx")
+text = "Jest tu od zarania dziejów"
+
+[node name="Price" type="Label" parent="."]
+layout_mode = 0
+anchor_left = 0.789963
+anchor_top = 0.620555
+anchor_right = 0.937732
+anchor_bottom = 0.760871
+offset_right = -8.0
+theme = ExtResource("2_ibylf")
+text = "3000$"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+anchor_left = 0.731413
+anchor_top = 0.0158103
+anchor_right = 0.989777
+anchor_bottom = 0.565219
+texture = ExtResource("4_p2eiu")
+expand_mode = 1
+
+[node name="Equip" type="Button" parent="."]
+layout_mode = 0
+anchor_left = 0.017658
+anchor_top = 0.537549
+anchor_right = 0.233271
+anchor_bottom = 0.816206
+offset_right = 8.0
+theme = ExtResource("2_ibylf")
+text = "Wyposarz"
+
+[node name="Buy" type="Button" parent="."]
+layout_mode = 0
+anchor_left = 0.017658
+anchor_top = 0.537549
+anchor_right = 0.233271
+anchor_bottom = 0.816206
+theme = ExtResource("2_ibylf")
+text = "Kup"
+
+[connection signal="pressed" from="Equip" to="." method="equip"]
+[connection signal="pressed" from="Buy" to="." method="buy"]

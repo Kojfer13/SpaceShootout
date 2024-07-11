@@ -28,6 +28,7 @@ func menu():
 	$UI.show_menu()
 	$UI.hide_hud()
 	$UI.hide_gameover()
+	$UI.hide_codes()
 	$UI/Sklep.hide()
 	$Tlo.hide()
 	$Gracz.hide()
@@ -173,6 +174,8 @@ func _notification(what):
 					$UI.hide_store()
 				4:
 					$UI.hide_credits()
+				5:
+					$UI.hide_codes()
 				_:
 					pass
 					
@@ -189,6 +192,8 @@ func _notification(what):
 					$UI.hide_store()
 				4:
 					$UI.hide_credits()
+				5:
+					$UI.hide_codes()
 				_:
 					print("NIC wartosc: ", GlobalVariables.WhereAmI)
 

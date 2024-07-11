@@ -11,19 +11,24 @@ script = ExtResource("1_32u3j")
 
 [node name="SubViewport" type="SubViewport" parent="."]
 transparent_bg = true
+size_2d_override = Vector2i(1024, 1024)
 
 [node name="bartosz" parent="SubViewport" instance=ExtResource("3_paf1u")]
 
 [node name="Camera3D" type="Camera3D" parent="SubViewport"]
 transform = Transform3D(-0.199211, 0, 0.0177475, 0.00105873, 0.199644, 0.0118839, -0.0177159, 0.011931, -0.198856, 0.17121, -0.37152, -1.94634)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -2)
-scale = Vector2(0.0453616, 0.0453616)
-texture = SubResource("ViewportTexture_nxdkd")
+[node name="SpotLight3D" type="SpotLight3D" parent="SubViewport"]
+transform = Transform3D(1, 0, 0, 0, -0.709755, 0.704448, 0, -0.704448, -0.709755, 0.00788569, 0.440546, -1.1612)
+spot_range = 4096.0
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(0, 1)
 polygon = PackedVector2Array(9, 8, 0, -10, -9, 8, -8, 8, -3, 5, -3, 6, 3, 6, 3, 5, 5.58499, 6.2925)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -9)
+scale = Vector2(0.178638, 0.180801)
+texture = SubResource("ViewportTexture_nxdkd")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

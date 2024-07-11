@@ -86,3 +86,8 @@ func show_credits():
 func hide_credits():
 	$Credits.hide()
 	GlobalVariables.WhereAmI = 0
+func show_codes():
+	$CodeScreen.show()
+	GlobalVariables.WhereAmI = 5
+func hide_codes():
+	$CodeScreen.hide()
