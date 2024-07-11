@@ -17,7 +17,6 @@ config/auto_accept_quit=false
 config/quit_on_go_back=false
 config/features=PackedStringArray("4.2", "GL Compatibility")
 boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 1)
-boot_splash/image="res://Logo.png"
 config/icon="res://icon/ic_launcher_background.png"
 
 [autoload]
