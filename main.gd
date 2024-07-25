@@ -39,7 +39,7 @@ func start():
 	GlobalVariables.WhereAmI = 1
 	print("Gdzie Jestem = 1 w start")
 	lives = 5
-	$ShootDelay.wait_time = 0.5  - GlobalVariables.SpeedLevel * 0.05
+	$ShootDelay.wait_time = 1  - GlobalVariables.SpeedLevel * 0.05
 	$SpawnDelay.wait_time = 1.5
 	$UI.score = -100
 	$UI.update_score() 
@@ -123,6 +123,7 @@ func save():
 func wczytaj():
 	if not FileAccess.file_exists("user://savegame.save"):
 		print("BRAK save")
+		GlobalVariables.EquipSkin.emit(-10)
 		return
 	var save = FileAccess.open("user://savegame.save", FileAccess.READ)
 	print("PLIK save ODNALEZIONY")
@@ -164,6 +165,8 @@ func _notification(what):
 			match GlobalVariables.WhereAmI: 
 				0:
 					print("JESTEM W 0")
+					if GlobalVariables.EquippedSkin == 4:
+						GlobalVariables.EquipSkin.emit(-10)
 					save()
 					get_tree().quit()
 				1:
@@ -183,6 +186,9 @@ func _notification(what):
 			#Android
 			match GlobalVariables.WhereAmI: 
 				0:
+					if GlobalVariables.EquippedSkin == 4:
+						GlobalVariables.EquipSkin.emit(-10)
+					save()
 					get_tree().quit()
 				1:
 					pause()

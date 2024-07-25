@@ -15,34 +15,37 @@ func skin(id, ifgolden):
 	print("Spawnuje Kosmite ze skinem: ", id)
 	match id:
 		1:
-			$Sprite2D.texture = preload("res://Skins/Classic/kwadrat.png")
+			if ifgolden:
+				$Sprite2D.texture = preload("res://Skins/Classic/GoldenSquare.png")
+			else:
+				$Sprite2D.texture = preload("res://Skins/Classic/kwadrat.png")
 			$Sprite2D.scale.x = 2.453
 			$Sprite2D.scale.y = 2.313
 			$Sprite2D.rotation = 0
 		2:
 			if ifgolden:
-				$Sprite2D.texture = preload("res://Skins/Golden/diamondalien.png")
+				$Sprite2D.texture = preload("res://Skins/Golden/uranium_metor.png")
 			else:
-				$Sprite2D.texture = preload("res://Skins/Golden/midasalien.png")
+				$Sprite2D.texture = preload("res://Skins/Golden/golden_asteroid.png")
 			$Sprite2D.scale.x = 1
 			$Sprite2D.scale.y = 1
 			$Sprite2D.rotation = 0
 		3:
 			if ifgolden:
-				$Sprite2D.texture = preload("res://Skins/Golden/spaceshipmidas.png")
+				$Sprite2D.texture = preload("res://Skins/Golden/golden_asteroid.png")
 			else:
-				$Sprite2D.texture = preload("res://spaceship.png")
+				$Sprite2D.texture = preload("res://Skins/asteroid.png")
 			$Sprite2D.scale.x = 0.3
 			$Sprite2D.scale.y = 0.3
 			$Sprite2D.rotation = deg_to_rad(180)
 		_:
 			print("DEF KOSMICI")
 			if ifgolden:
-				$Sprite2D.texture = preload("res://Skins/Golden/midasalien.png")
+				$Sprite2D.texture = preload("res://Skins/Golden/golden_asteroid.png")
 			else:
-				$Sprite2D.texture = preload("res://Skins/alien.png")
-			$Sprite2D.scale.x = 1
-			$Sprite2D.scale.y = 1
+				$Sprite2D.texture = preload("res://Skins/asteroid.png")
+			$Sprite2D.scale.x = 0.3
+			$Sprite2D.scale.y = 0.3
 			$Sprite2D.rotation = 0
 func _process(_delta):
 	pass

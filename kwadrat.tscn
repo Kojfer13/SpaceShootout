@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://cdf0x2gbdxojg"]
 
 [ext_resource type="Script" path="res://kwadrat.gd" id="1_7c101"]
-[ext_resource type="Texture2D" uid="uid://cf2ov6ohi0bwi" path="res://spaceship.png" id="2_sq326"]
+[ext_resource type="Texture2D" uid="uid://sacfh4l3djce" path="res://Skins/asteroid.png" id="2_p8ovo"]
 [ext_resource type="FontFile" uid="uid://dmkolx8kifdm7" path="res://COMIC.TTF" id="3_08any"]
 
 [sub_resource type="Gradient" id="Gradient_w66yd"]
@@ -27,7 +27,7 @@ script = ExtResource("1_7c101")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-0.5, 0)
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("2_sq326")
+texture = ExtResource("2_p8ovo")
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -38,7 +38,6 @@ polygon = PackedVector2Array(44.5, 75, 44.5, 70, 64.5, 70, 64.5, 65, 74.5, 65, 7
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(0, -0.500003)
 scale = Vector2(7.9, 7.45)
-metadata/_edit_lock_ = true
 
 [node name="CashParticle" type="GPUParticles2D" parent="."]
 scale = Vector2(1, 0.993634)

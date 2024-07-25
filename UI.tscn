@@ -1,12 +1,14 @@
-[gd_scene load_steps=33 format=3 uid="uid://rafx5036qkeb"]
+[gd_scene load_steps=36 format=3 uid="uid://rafx5036qkeb"]
 
 [ext_resource type="FontFile" uid="uid://dmkolx8kifdm7" path="res://COMIC.TTF" id="1_2yte2"]
 [ext_resource type="Script" path="res://UI.gd" id="1_o3wiw"]
 [ext_resource type="Texture2D" uid="uid://dl520jwmeymai" path="res://MenuBg.png" id="2_q8oov"]
 [ext_resource type="Theme" uid="uid://jkpp3nh2f6jd" path="res://MenuButtons.tres" id="4_brhax"]
-[ext_resource type="Texture2D" uid="uid://dewj8mkrrmqkh" path="res://zycie.png" id="4_byexd"]
+[ext_resource type="Script" path="res://SubViewpsort.gd" id="4_n784i"]
+[ext_resource type="PackedScene" uid="uid://c387lxuk1s1n0" path="res://Skins/bartekskin/bartosz.glb" id="5_tk4jp"]
 [ext_resource type="Texture2D" uid="uid://bd3bxptasb18" path="res://GameOverBg.png" id="6_2ir0q"]
 [ext_resource type="Texture2D" uid="uid://bu66s8roxey06" path="res://pause.png" id="6_fr6qq"]
+[ext_resource type="Texture2D" uid="uid://cgrct60kwo8xd" path="res://heart.png" id="6_om702"]
 [ext_resource type="Script" path="res://Ulepszenia.gd" id="8_6du5d"]
 [ext_resource type="Script" path="res://FasterShooting.gd" id="8_u0b72"]
 [ext_resource type="Texture2D" uid="uid://d34i7xg8l21bu" path="res://placeholder.png" id="8_w2brb"]
@@ -29,6 +31,9 @@
 [ext_resource type="Texture2D" uid="uid://3t6ga6m2bt0" path="res://Skins/alien.png" id="27_b46bh"]
 [ext_resource type="Script" path="res://CodeScreen.gd" id="28_0jt6w"]
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_qf43u"]
+viewport_path = NodePath("TitleScreen/SpecialBgViewport")
+
 [sub_resource type="Theme" id="Theme_c6qli"]
 default_font = ExtResource("1_2yte2")
 default_font_size = 50
@@ -47,7 +52,6 @@ default_font_size = 30
 script = ExtResource("1_o3wiw")
 
 [node name="TitleScreen" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="TloEkran" type="TextureRect" parent="TitleScreen"]
 anchors_preset = 15
@@ -55,9 +59,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-rotation = 3.14159
 pivot_offset = Vector2(540, 1200)
-texture = ExtResource("2_q8oov")
+texture = SubResource("ViewportTexture_qf43u")
 metadata/_edit_use_anchors_ = true
 
 [node name="Title" type="Label" parent="TitleScreen"]
@@ -85,7 +88,7 @@ anchor_bottom = 0.997917
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("1_2yte2")
 theme_override_font_sizes/font_size = 30
-text = "0.5.0 (BETA)"
+text = "0.6.0 (BETA)"
 metadata/_edit_use_anchors_ = true
 
 [node name="StartButton" type="Button" parent="TitleScreen"]
@@ -154,15 +157,32 @@ theme_override_font_sizes/font_size = 100
 text = "Kody"
 metadata/_edit_use_anchors_ = true
 
+[node name="SpecialBgViewport" type="SubViewport" parent="TitleScreen"]
+transparent_bg = true
+size_2d_override = Vector2i(1024, 1024)
+script = ExtResource("4_n784i")
+
+[node name="bartosz" parent="TitleScreen/SpecialBgViewport" instance=ExtResource("5_tk4jp")]
+
+[node name="Camera3D" type="Camera3D" parent="TitleScreen/SpecialBgViewport"]
+transform = Transform3D(-0.199211, 0, 0.0177475, 0.00105873, 0.199644, 0.0118839, -0.0177159, 0.011931, -0.198856, 0.17121, -0.37152, -1.94634)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="TitleScreen/SpecialBgViewport"]
+transform = Transform3D(1, 0, 0, 0, -0.709755, 0.704448, 0, -0.704448, -0.709755, 0.00788569, 0.440546, -1.1612)
+spot_range = 4096.0
+
+[node name="RotateTimer" type="Timer" parent="TitleScreen/SpecialBgViewport"]
+wait_time = 0.05
+autostart = true
+
 [node name="Hud" type="CanvasLayer" parent="."]
 
 [node name="LivesDisplay" type="Label" parent="Hud"]
 anchors_preset = -1
-anchor_left = 0.146296
-anchor_top = 0.0229167
-anchor_right = 0.210879
-anchor_bottom = 0.0631945
-offset_right = 1.52588e-05
+anchor_left = 0.062963
+anchor_top = 0.02125
+anchor_right = 0.127546
+anchor_bottom = 0.0615278
 theme_override_fonts/font = ExtResource("1_2yte2")
 theme_override_font_sizes/font_size = 50
 text = "5"
@@ -170,11 +190,13 @@ metadata/_edit_use_anchors_ = true
 
 [node name="LivesIcon" type="TextureRect" parent="Hud"]
 anchors_preset = -1
-anchor_left = 0.0518519
-anchor_top = 0.0229167
-anchor_right = 0.124074
-anchor_bottom = 0.0583334
-texture = ExtResource("4_byexd")
+anchor_left = 0.037037
+anchor_top = 0.0179167
+anchor_right = 0.125926
+anchor_bottom = 0.0579167
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_om702")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
@@ -193,10 +215,14 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Shield" type="TextureRect" parent="Hud"]
 anchors_preset = -1
-anchor_left = 0.0157407
-anchor_top = 0.00875
+anchor_left = 0.0305555
+anchor_top = 0.0154167
 anchor_right = 0.148148
 anchor_bottom = 0.0683333
+offset_left = -8.99995
+offset_top = -2.0
+offset_right = -8.99995
+offset_bottom = -2.0
 texture = ExtResource("17_cw38t")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
@@ -207,6 +233,8 @@ anchor_left = 0.0648148
 anchor_top = 0.02125
 anchor_right = 0.101852
 anchor_bottom = 0.0508333
+offset_top = -1.0
+offset_bottom = -1.0
 theme_override_fonts/font = ExtResource("1_2yte2")
 theme_override_font_sizes/font_size = 50
 text = "5"
@@ -718,7 +746,7 @@ metadata/_edit_use_anchors_ = true
 visible = false
 script = ExtResource("28_0jt6w")
 
-[node name="TloEkran" type="TextureRect" parent="CodeScreen"]
+[node name="TloCode" type="TextureRect" parent="CodeScreen"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -769,6 +797,7 @@ text = "Zły kod"
 [connection signal="pressed" from="TitleScreen/StoreButton" to="Sklep/Zakladki/Ulepszenia/MoreMoney" method="_ready"]
 [connection signal="pressed" from="TitleScreen/CreditsButton" to="." method="show_credits"]
 [connection signal="pressed" from="TitleScreen/CodesButton" to="." method="show_codes"]
+[connection signal="timeout" from="TitleScreen/SpecialBgViewport/RotateTimer" to="TitleScreen/SpecialBgViewport" method="_on_rotate_timer_timeout"]
 [connection signal="pressed" from="Hud/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="GameOver/Menu" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="GameOver/Retry" to="." method="_on_retry_pressed"]

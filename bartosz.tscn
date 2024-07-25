@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dyqe6gpoifxxc"]
+
+[ext_resource type="PackedScene" uid="uid://c387lxuk1s1n0" path="res://Skins/bartekskin/bartosz.glb" id="1_ia1n4"]
+
+[node name="bartosz" instance=ExtResource("1_ia1n4")]

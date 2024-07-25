@@ -1,0 +1,4 @@
+#Fri Jul 12 03:26:52 CEST 2024
+base.0=C\:\\Users\\kojfer\\Documents\\GitHub\\SpaceShootout\\android\\build\\build\\intermediates\\dex\\release\\mergeDexRelease\\classes.dex
+renamed.0=classes.dex
+path.0=classes.dex

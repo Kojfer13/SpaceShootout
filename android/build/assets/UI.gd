@@ -11,11 +11,15 @@ signal refresh
 var score = 0
 var highscore = 0
 
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	GlobalVariables.EquipSkin.connect(change_menu_bg)
+	$TitleScreen/TloEkran.texture = preload("res://MenuBg.png")
 	pass # Replace with function body.
 
-func zapisz():
+func saved():
 	var save_dict = {
 		"highscore" : highscore,
 		"cash" : GlobalVariables.cash,
@@ -31,13 +35,13 @@ func _process(_delta):
 	pass
 func _on_start_button_pressed():
 	emit_signal("start")
-func ukryj_menu():
+func hide_menu():
 	$TitleScreen.hide()
-func pokarz_menu():
+func show_menu():
 	$TitleScreen.show()
-func pokarz_hud():
+func show_hud():
 	$Hud.show()
-func ukryj_hud():
+func hide_hud():
 	$Hud.hide()
 func gameover():
 	#$GameOver/ScoreValue.text = str(score)
@@ -47,23 +51,23 @@ func gameover():
 		save.emit()
 	$GameOver/HighScoreText.text = "Twój najlepszy wynik to: %s" % highscore
 	$GameOver.show()
-func ukryj_gameover():
+func hide_gameover():
 	$GameOver.hide()
-func update_zycia(wynik):
+func update_lives(wynik):
 	$Hud/LivesDisplay.text = str(wynik)
 func update_shield(wynik):
 	$Hud/ShieldDisplay.text = str(wynik)
-func pokarz_tarcze():
+func show_shield():
 	$Hud/Shield.show()
 	$Hud/ShieldDisplay.show()
-func ukryj_tarcze():
+func hide_shield():
 	$Hud/Shield.hide()
 	$Hud/ShieldDisplay.hide()
 func update_score():
 	score += 100
-func pokarz_pauze():
+func show_pause():
 	$PauseScreen.show()
-func ukryj_pauze():
+func hide_pause():
 	print("odpauza")
 	$PauseScreen.hide()
 	unpause.emit()
@@ -73,16 +77,28 @@ func _on_retry_pressed():
 	emit_signal("retry")
 func _on_pause_button_pressed():
 	pause.emit()
-func pokarz_sklep():
+func show_store():
 	refresh.emit()
 	$Sklep.show()
-	GlobalVariables.GdzieJestem = 3
-func ukryj_sklep():
+	GlobalVariables.WhereAmI = 3
+func hide_store():
 	$Sklep.hide()
-	GlobalVariables.GdzieJestem = 0
-func pokarz_credits():
+	GlobalVariables.WhereAmI = 0
+func show_credits():
 	$Credits.show()
-	GlobalVariables.GdzieJestem = 4
-func ukryj_credits():
+	GlobalVariables.WhereAmI = 4
+func hide_credits():
 	$Credits.hide()
-	GlobalVariables.GdzieJestem = 0
+	GlobalVariables.WhereAmI = 0
+func show_codes():
+	$CodeScreen.show()
+	GlobalVariables.WhereAmI = 5
+func hide_codes():
+	$CodeScreen.hide()
+	GlobalVariables.WhereAmI = 0
+func change_menu_bg(id):
+	if id == 4:
+		$TitleScreen/TloEkran.texture = $TitleScreen/SpecialBgViewport.get_texture()
+	else:
+		$TitleScreen/TloEkran.texture = preload("res://MenuBg.png")
+	

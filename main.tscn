@@ -10,6 +10,7 @@
 script = ExtResource("1_yh5v6")
 
 [node name="UI" parent="." instance=ExtResource("5_fgdff")]
+visible = false
 
 [node name="Tlo" type="TextureRect" parent="."]
 anchors_preset = -1
